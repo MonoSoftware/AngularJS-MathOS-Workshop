@@ -19,7 +19,13 @@
                     Title:{{::todo.title}}        
                 </li>
                 <li>
-                    Date:{{::todo.date}}        
+                    Upper:{{::todo.title | uppercase}}        
+                </li>
+                <li>
+                    Lower:{{::todo.title | lowercase}}      
+                </li>
+                <li>
+                    Date:{{::todo.date | date:'yyyy-MM-dd'}}        
                 </li>
             </ul>
         </div>
