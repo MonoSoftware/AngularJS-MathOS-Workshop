@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="todoList">
 <head>
     <meta charset="utf-8"/>
     <title>AngularJS ToDo List - MathOS Workshop</title>
@@ -7,15 +7,25 @@
 </head>
 <body>
     <div>
-        <header role="header">            
+        <header>            
             <h1>AngularJS ToDo List - MathOS Workshop</h1>
         </header>
-        <div >
+        <div ng-controller="MainController as main">
+            <ul>
+                <li>
+                    Id:{{::main.todo.id}}        
+                </li>
+                <li>
+                    Title:{{::main.todo.title}}        
+                </li>
+            </ul>
         </div>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.4.0/angular.js"></script>
+    <script src="https://code.angularjs.org/1.4.0/angular-route.min.js"></script>
     <script src="app/app.module.js"></script>
     <script src="app/app.config.js"></script>
+    <script src="app/todo-list/todo-list.controller.js"></script>
 </body>
 </html>

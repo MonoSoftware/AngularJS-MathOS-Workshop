@@ -1,4 +1,6 @@
 (function (angular) {
 	'use strict';
-	angular.module('todoList', []);	
+	angular.module('todoList', [
+		'ngRoute'
+		]);	
 })(angular);
