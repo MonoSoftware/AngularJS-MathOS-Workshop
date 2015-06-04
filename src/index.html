@@ -27,6 +27,12 @@
                 <li>
                     Date:{{::todo.date | date:'yyyy-MM-dd'}}        
                 </li>
+                <li>
+                    Done:{{::todo.done}}        
+                </li>
+                <li>
+                    Textual done:{{::todo.done | doneToText}}        
+                </li>
             </ul>
         </div>
     </div>
@@ -36,5 +42,6 @@
     <script src="app/app.module.js"></script>
     <script src="app/app.config.js"></script>
     <script src="app/todo-list/todo-list.controller.js"></script>
+    <script src="app/components/filters/done-to-text.filter.js"></script>        
 </body>
 </html>

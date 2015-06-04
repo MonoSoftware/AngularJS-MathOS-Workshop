@@ -6,7 +6,8 @@
 				$scope.todo = {
 					id: 1,
 					title: 'My Todo',
-					date: new Date()
+					date: new Date(),
+					done: true
 				};
 			 }]);
 })(angular);
