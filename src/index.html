@@ -4,6 +4,7 @@
     <meta charset="utf-8"/>
     <title>AngularJS ToDo List - MathOS Workshop</title>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="app/app.css">
 </head>
 <body>
     <div>
@@ -11,29 +12,87 @@
             <h1>AngularJS ToDo List - MathOS Workshop</h1>
         </header>
         <div ng-controller="MainController as main">
-            <ul>
-                <li>
-                    Id:{{::todo.id}}        
-                </li>
-                <li>
-                    Title:{{::todo.title}}        
-                </li>
-                <li>
-                    Upper:{{::todo.title | uppercase}}        
-                </li>
-                <li>
-                    Lower:{{::todo.title | lowercase}}      
-                </li>
-                <li>
-                    Date:{{::todo.date | date:'yyyy-MM-dd'}}        
-                </li>
-                <li>
-                    Done:{{::todo.done}}        
-                </li>
-                <li>
-                    Textual done:{{::todo.done | doneToText}}        
-                </li>
-            </ul>
+            <div>
+                <table >
+                    <tr>
+                        <th>
+                            Id
+                        </th>
+                        <th>
+                            Title
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            Status
+                        </th>    
+                        <th>
+                            Action
+                        </th>                    
+                    </tr>
+                    <tr ng-repeat="todo in todos">
+                        <td>
+                            {{todo.id}}
+                        </td>
+                        <td>
+                           <a href="javascript:void(0);" ng-click="main.select(todo)" title="{{todo.title}}">{{todo.title}}</a>
+                        </td>
+                        <td>
+                            {{todo.date | date:'yyyy-MM-dd hh:mm'}}
+                        </td>
+                        <td>
+                            {{todo.done | doneToText}}
+                        </td>
+                        <td>
+                            <a href="javascript:void(0);" ng-click="main.edit(todo)" title="Edit">Edit</a>
+                        </td>
+                    </tr>
+                </table>
+                <a href="javascript:void(0);" ng-click="main.add()" title="Add">Add</a>
+            </div>            
+            <div ng-show="main.view.editVisible">
+                <div>
+                    <label for="txtId">Id</label>
+                     <input type="text" id="txtId" ng-model="selectedTodo.id"></input>
+                </div>
+                <div>
+                    <label for="txtTitle">Title</label>
+                     <input type="text" id="txtTitle" ng-model="selectedTodo.title"></input>
+                </div>                
+                <div>
+                    <label for="chkDone">Done</label>
+                     <input type="checkbox" id="chkDone" ng-model="selectedTodo.done"></input>
+                </div>
+                <a href="javascript:void(0);" ng-click="main.save()" title="Save">Save</a>
+                <a href="javascript:void(0);" ng-click="main.close()" title="Cancel">Cancel</a>
+            </div>
+            <div ng-show="main.view.previewVisible">
+                <ul>
+                    <li>
+                        Id:{{selectedTodo.id}}        
+                    </li>
+                    <li>
+                        Title:{{selectedTodo.title}}        
+                    </li>
+                    <li>
+                        Upper:{{selectedTodo.title | uppercase}}        
+                    </li>
+                    <li>
+                        Lower:{{selectedTodo.title | lowercase}}      
+                    </li>
+                    <li>
+                        Date:{{selectedTodo.date | date:'yyyy-MM-dd hh:mm'}}        
+                    </li>
+                    <li>
+                        Done:{{selectedTodo.done}}        
+                    </li>
+                    <li>
+                        Textual done:{{selectedTodo.done | doneToText}}        
+                    </li>
+                </ul>
+                <a href="javascript:void(0);" ng-click="main.close()" title="Close">Close</a>
+            </div>
         </div>
     </div>
 
