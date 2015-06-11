@@ -1,8 +1,8 @@
 (function (angular) {
 	'use strict';
 	angular.module('todoList')
-		.controller('MainController', ['$scope',
-			function ($scope) {
+		.controller('MainController', ['$scope', '$http',
+			function ($scope, $http) {
 				this.view = {
 					previewVisible : false,
 					editVisible: false
@@ -52,17 +52,9 @@
 					this.close();	
 				};
 				
-				$scope.todos = [{
-					id: 1,
-					title: 'My Todo 1',
-					date: new Date(),
-					done: true
-				},
-				{
-					id: 2,
-					title: 'My Todo 2',
-					date: new Date(),
-					done: false
-				}];
+				$http.get('https://api.baasic.com/beta/mathos-ng/resources/todolist/')
+					.success(function(data) {
+						$scope.todos = data.item;		
+					});
 			 }]);
 })(angular);
