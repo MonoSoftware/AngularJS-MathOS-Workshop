@@ -64,29 +64,7 @@
                 <a href="javascript:void(0);" ng-click="main.close()" title="Cancel">Cancel</a>
             </div>
             <div ng-if="main.view.previewVisible" >
-                <ul>
-                    <li>
-                        Id:{{selectedTodo.id}}        
-                    </li>
-                    <li>
-                        Title:{{selectedTodo.title}}        
-                    </li>
-                    <li>
-                        Upper:{{selectedTodo.title | uppercase}}        
-                    </li>
-                    <li>
-                        Lower:{{selectedTodo.title | lowercase}}      
-                    </li>
-                    <li>
-                        Date:{{selectedTodo.date | date:'yyyy-MM-dd hh:mm'}}        
-                    </li>
-                    <li>
-                        Done:{{selectedTodo.done}}        
-                    </li>
-                    <li>
-                        Textual done:{{selectedTodo.done | doneToText}}        
-                    </li>
-                </ul>
+                <todo-list-preview selected-todo="selectedTodo"></todo-list-preview>
                 <a href="javascript:void(0);" ng-click="main.close()" title="Close">Close</a>
             </div>
         </div>
@@ -98,6 +76,7 @@
     <script src="app/app.config.js"></script>
     <script src="app/todo-list/todo-list.controller.js"></script>
     <script src="app/todo-list/todo-list.service.js"></script>
+    <script src="app/todo-list/todo-list-preview.directive.js"></script>
     <script src="app/components/filters/done-to-text.filter.js"></script>        
 </body>
 </html>
