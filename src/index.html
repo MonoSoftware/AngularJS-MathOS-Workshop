@@ -31,7 +31,7 @@
                             Action
                         </th>                    
                     </tr>
-                    <tr ng-repeat="todo in todos">
+                    <tr ng-repeat="todo in todos" ng-class="{ strong: todo.id === selectedTodo.id }">
                         <td>
                             {{todo.id}}
                         </td>
@@ -51,7 +51,7 @@
                 </table>
                 <a href="javascript:void(0);" ng-click="main.add()" title="Add">Add</a>
             </div>            
-            <div ng-show="main.view.editVisible">                
+            <div ng-if="main.view.editVisible">                
                 <div>
                     <label for="txtTitle">Title</label>
                      <input type="text" id="txtTitle" ng-model="selectedTodo.title"></input>
@@ -63,7 +63,7 @@
                 <a href="javascript:void(0);" ng-click="main.save()" title="Save">Save</a>
                 <a href="javascript:void(0);" ng-click="main.close()" title="Cancel">Cancel</a>
             </div>
-            <div ng-show="main.view.previewVisible">
+            <div ng-if="main.view.previewVisible" >
                 <ul>
                     <li>
                         Id:{{selectedTodo.id}}        

@@ -5,3 +5,8 @@ table, th, td {
 th, td {
     padding: 15px;
 }
+
+.strong
+{
+    font-weight: bold;
+}
