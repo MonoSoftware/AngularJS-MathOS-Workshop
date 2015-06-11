@@ -9,7 +9,7 @@
 					scope: {
 	                    selectedTodo: '='
 	                },
-					templateUrl: 'app/todo-list/todo-list-preview.html' 	                
+					templateUrl: 'app/components/directives/todo-list-preview/todo-list-preview.html' 	                
 				}
 			 }]);
 })(angular);

@@ -3,12 +3,20 @@
 	angular.module('todoList')
 		.config(['$routeProvider',
 			function ($routeProvider) {
-			/* 
+			 
 			$routeProvider
-				.when('/', { templateUrl: 'app/todo-list/list.html', title: 'ToDo List' })
-				.when('/insert', { templateUrl: 'app/todo-list/insert.html', title: 'Insert ToDo' })
-				.when('/preview', { templateUrl: 'app/todo-list/preview.html', title: 'Preview ToDo' })
+				.when('/', { 
+					templateUrl: 'app/todo-list/todo-list.html', 
+					title: 'ToDo List',
+					controller: 'MainController',
+					controllerAs: 'main' 
+				})
+				.when('/todo/:id', { 
+					templateUrl: 'app/todo/todo.html', 
+					title: 'Preview ToDo', 
+					controller: 'TodoController'
+				})				
 				.otherwise({ redirectTo: '/' });
-			*/
+			
 		}]);	
 })(angular);

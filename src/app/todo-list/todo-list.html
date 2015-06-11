@@ -1,0 +1,58 @@
+<div>
+    <div>
+        <table >
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Date
+                </th>
+                <th>
+                    Status
+                </th>    
+                <th>
+                    Action
+                </th>                    
+            </tr>
+            <tr ng-repeat="todo in todos" ng-class="{ strong: todo.id === selectedTodo.id }">
+                <td>
+                    {{todo.id}}
+                </td>
+                <td>
+                   <a href="javascript:void(0);" ng-click="main.select(todo)" title="{{todo.title}}">{{todo.title}}</a>
+                </td>
+                <td>
+                    {{todo.date | date:'yyyy-MM-dd hh:mm'}}
+                </td>
+                <td>
+                    {{todo.done | doneToText}}
+                </td>
+                <td>
+                    <a href="javascript:void(0);" ng-click="main.edit(todo)" title="Edit">Edit</a>
+                    <a href="#todo/{{todo.id}}/" title="Preview">Standalone Preview</a>
+                </td>
+            </tr>
+        </table>
+        <a href="javascript:void(0);" ng-click="main.add()" title="Add">Add</a>
+    </div>            
+    <div ng-if="main.view.editVisible">                
+        <div>
+            <label for="txtTitle">Title</label>
+             <input type="text" id="txtTitle" ng-model="selectedTodo.title"></input>
+        </div>                
+        <div>
+            <label for="chkDone">Done</label>
+             <input type="checkbox" id="chkDone" ng-model="selectedTodo.done"></input>
+        </div>
+        <a href="javascript:void(0);" ng-click="main.save()" title="Save">Save</a>
+        <a href="javascript:void(0);" ng-click="main.close()" title="Cancel">Cancel</a>
+    </div>
+    <div ng-if="main.view.previewVisible" >
+        <todo-list-preview selected-todo="selectedTodo"></todo-list-preview>
+        <a href="javascript:void(0);" ng-click="main.close()" title="Close">Close</a>
+    </div>
+</div>

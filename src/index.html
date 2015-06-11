@@ -11,62 +11,8 @@
         <header>            
             <h1>AngularJS ToDo List - MathOS Workshop</h1>
         </header>
-        <div ng-controller="MainController as main">
-            <div>
-                <table >
-                    <tr>
-                        <th>
-                            Id
-                        </th>
-                        <th>
-                            Title
-                        </th>
-                        <th>
-                            Date
-                        </th>
-                        <th>
-                            Status
-                        </th>    
-                        <th>
-                            Action
-                        </th>                    
-                    </tr>
-                    <tr ng-repeat="todo in todos" ng-class="{ strong: todo.id === selectedTodo.id }">
-                        <td>
-                            {{todo.id}}
-                        </td>
-                        <td>
-                           <a href="javascript:void(0);" ng-click="main.select(todo)" title="{{todo.title}}">{{todo.title}}</a>
-                        </td>
-                        <td>
-                            {{todo.date | date:'yyyy-MM-dd hh:mm'}}
-                        </td>
-                        <td>
-                            {{todo.done | doneToText}}
-                        </td>
-                        <td>
-                            <a href="javascript:void(0);" ng-click="main.edit(todo)" title="Edit">Edit</a>
-                        </td>
-                    </tr>
-                </table>
-                <a href="javascript:void(0);" ng-click="main.add()" title="Add">Add</a>
-            </div>            
-            <div ng-if="main.view.editVisible">                
-                <div>
-                    <label for="txtTitle">Title</label>
-                     <input type="text" id="txtTitle" ng-model="selectedTodo.title"></input>
-                </div>                
-                <div>
-                    <label for="chkDone">Done</label>
-                     <input type="checkbox" id="chkDone" ng-model="selectedTodo.done"></input>
-                </div>
-                <a href="javascript:void(0);" ng-click="main.save()" title="Save">Save</a>
-                <a href="javascript:void(0);" ng-click="main.close()" title="Cancel">Cancel</a>
-            </div>
-            <div ng-if="main.view.previewVisible" >
-                <todo-list-preview selected-todo="selectedTodo"></todo-list-preview>
-                <a href="javascript:void(0);" ng-click="main.close()" title="Close">Close</a>
-            </div>
+        <div ng-view>
+            
         </div>
     </div>
 
@@ -74,9 +20,10 @@
     <script src="https://code.angularjs.org/1.4.0/angular-route.min.js"></script>
     <script src="app/app.module.js"></script>
     <script src="app/app.config.js"></script>
-    <script src="app/todo-list/todo-list.controller.js"></script>
-    <script src="app/todo-list/todo-list.service.js"></script>
-    <script src="app/todo-list/todo-list-preview.directive.js"></script>
+    <script src="app/components/directives/todo-list-preview/todo-list-preview.directive.js"></script>
     <script src="app/components/filters/done-to-text.filter.js"></script>        
+    <script src="app/todo-list/todo-list.service.js"></script>
+    <script src="app/todo-list/todo-list.controller.js"></script>
+    <script src="app/todo/todo.controller.js"></script>
 </body>
 </html>
