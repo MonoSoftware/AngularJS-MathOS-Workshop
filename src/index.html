@@ -51,11 +51,7 @@
                 </table>
                 <a href="javascript:void(0);" ng-click="main.add()" title="Add">Add</a>
             </div>            
-            <div ng-show="main.view.editVisible">
-                <div>
-                    <label for="txtId">Id</label>
-                     <input type="text" id="txtId" ng-model="selectedTodo.id"></input>
-                </div>
+            <div ng-show="main.view.editVisible">                
                 <div>
                     <label for="txtTitle">Title</label>
                      <input type="text" id="txtTitle" ng-model="selectedTodo.title"></input>
@@ -101,6 +97,7 @@
     <script src="app/app.module.js"></script>
     <script src="app/app.config.js"></script>
     <script src="app/todo-list/todo-list.controller.js"></script>
+    <script src="app/todo-list/todo-list.service.js"></script>
     <script src="app/components/filters/done-to-text.filter.js"></script>        
 </body>
 </html>

@@ -1,12 +1,13 @@
 (function (angular) {
 	'use strict';
 	angular.module('todoList')
-		.controller('MainController', ['$scope', '$http',
-			function ($scope, $http) {
+		.controller('MainController', ['$scope', 'toDoListService',
+			function ($scope, toDoListService) {
 				this.view = {
 					previewVisible : false,
 					editVisible: false
 				};
+				$scope.todos = [];
 				$scope.selectedTodo = {};
 								
 				this.showEdit = function() {
@@ -25,13 +26,13 @@
 					$scope.selectedTodo = {};
 				};
 				
-				this.select = function(todo) {
+				this.select = function(todo) {					
 					$scope.selectedTodo = todo;	
 					this.showPreview();
 				};
 				
 				this.edit = function(todo) {
-					$scope.selectedTodo = todo;	
+					$scope.selectedTodo = todo;
 					this.showEdit();
 				};
 				
@@ -46,15 +47,23 @@
 						$scope.selectedTodo.date = new Date();
 						if ($scope.selectedTodo.done === undefined) {
 							$scope.selectedTodo.done = false;
-						}
-						$scope.todos.push($scope.selectedTodo);						
+						}						
+						toDoListService.post($scope.selectedTodo).success(function(data) {
+								fetch();
+							});						
+					} else {
+						toDoListService.put($scope.selectedTodo.id, $scope.selectedTodo).success(function(data) {
+								fetch();
+							});
 					}
 					this.close();	
 				};
 				
-				$http.get('https://api.baasic.com/beta/mathos-ng/resources/todolist/')
-					.success(function(data) {
+				function fetch() {
+					toDoListService.fetch().success(function(data) {
 						$scope.todos = data.item;		
 					});
+				};
+				fetch();
 			 }]);
 })(angular);
